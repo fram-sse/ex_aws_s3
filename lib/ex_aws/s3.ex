@@ -1042,12 +1042,7 @@ defmodule ExAws.S3 do
       |> Map.delete(:encryption)
       |> put_object_headers
 
-    encoded_src_object =
-      src_object
-      |> String.split("/")
-      |> Enum.reject(&(&1 == ""))
-      |> Enum.map(&URI.encode_www_form(&1))
-      |> Enum.join("/")
+    encoded_src_object = src_object
 
     headers =
       regular_headers
